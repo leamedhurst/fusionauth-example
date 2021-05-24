@@ -21,9 +21,9 @@ router.get('/', function (req, res, next) {
 
 /* OAuth return from FusionAuth */
 router.get('/oauth-redirect', function (req, res, next) {
-  const stateFromServer = req.query.state;
+  const stateFromServer = req.query.userState;
   console.log(req.query)
-  if (stateFromServer !== req.session.stateValue) {
+  if (stateFromServer !== "Authenticated") {
     console.log("State doesn't match. uh-oh.");
     console.log("Saw: " + stateFromServer + ", but expected: " + req.session.stateValue);
     res.redirect(302, '/');
