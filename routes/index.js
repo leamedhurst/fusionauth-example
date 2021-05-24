@@ -33,7 +33,7 @@ router.get('/oauth-redirect', function (req, res, next) {
  client.exchangeOAuthCodeForAccessTokenUsingPKCE(req.query.code,
                                                  clientId,
                                                  clientSecret,
-                                                 'https://ezgpwum4qb.us-east-2.awsapprunner.com:3000/oauth-redirect',
+                                                 'https://ezgpwum4qb.us-east-2.awsapprunner.com/oauth-redirect',
                                                  req.session.verifier)
       .then((response) => {
         return client.retrieveUserUsingJWT(response.response.access_token);
