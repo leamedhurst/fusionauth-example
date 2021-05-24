@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
-const clientId = '85a03867-dccf-4882-adde-1a79aeec50df';
-const clientSecret = '7gh9U0O1wshsrVVvflccX-UL2zxxsYccjdw8_rOfsfE';
-const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
+const clientId = '43b727d8-5937-4d28-80b9-8a223e888f3a';
+const clientSecret = 'gWTckuwGibej7Z5YjRWCIrZ6Av474Sn2qy3JXqHwpzc';
+const client = new FusionAuthClient('noapikeyneeded', 'http://fusionauthpublicalb-746568800.ap-southeast-2.elb.amazonaws.com/');
 const pkceChallenge = require('pkce-challenge');
 
 /* GET home page. */
@@ -33,7 +33,7 @@ router.get('/oauth-redirect', function (req, res, next) {
  client.exchangeOAuthCodeForAccessTokenUsingPKCE(req.query.code,
                                                  clientId,
                                                  clientSecret,
-                                                 'http://localhost:3000/oauth-redirect',
+                                                 'https://ezgpwum4qb.us-east-2.awsapprunner.com:3000/oauth-redirect',
                                                  req.session.verifier)
       .then((response) => {
         return client.retrieveUserUsingJWT(response.response.access_token);
